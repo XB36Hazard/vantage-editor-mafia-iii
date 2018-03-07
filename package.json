@@ -1,0 +1,61 @@
+{
+  "name": "editor-mafia-iii",
+  "author": "XB36Hazard",
+  "description": "Mafia III Save Editor",
+  "version": "0.1.0",
+  "vantage": {
+    "game": "Mafia III",
+    "scid": "331e0100-3ef1-40a9-87e5-3f84131a8287",
+    "thumbnailUrl": "https://images-eds-ssl.xboxlive.com/image?url=8Oaj9Ryq1G1_p3lLnXlsaZgGzAie6Mnu24_PawYuDYIoH77pJ.X5Z.MqQPibUVTc22czddQ0peHMdVwcyrvB4p2DTeSRkL.azoEdVT86qU1HJ_6vDC6a_yw2E84r_tXPnWOu4LOMnJaCsR.U5l2_jnzZsNMZ86qSXwoEhbCRSIU7eq6VfnRzoVYeuMaJKzrYPvmL.tOJohgj5vfYx8td7FAgnDYAAZL6yb19._KgT3Y-&w=150&h=150",
+    "name": "Campaign Editor",
+    "containerFilter": "savegames",
+    "fileFilter": "/^slot_\\d+$/"
+  },
+  "repository": {
+    "type": "github",
+    "url": "https://github.com/XB36Hazard/vantage-editor-mafia-iii"
+  },
+  "license": "GPL-3.0",
+  "dependencies": {
+    "aurelia-animator-css": "^1.0.4",
+    "aurelia-bootstrapper": "^2.1.1",
+    "big-integer": "^1.6.26",
+    "bluebird": "^3.5.1",
+    "crc-32": "^1.1.1",
+    "libvantage": "^0.2.0",
+    "requirejs": "^2.3.5",
+    "text": "github:requirejs/text#latest",
+    "tslib": "^1.8.1"
+  },
+  "devDependencies": {
+    "@types/node": "^7.0.52",
+    "aurelia-cli": "^0.32.0",
+    "aurelia-testing": "^1.0.0-beta.4.0.0",
+    "aurelia-tools": "^1.0.0",
+    "browser-sync": "^2.23.2",
+    "connect-history-api-fallback": "^1.5.0",
+    "debounce": "^1.1.0",
+    "event-stream": "^3.3.3",
+    "gulp": "github:gulpjs/gulp#4.0",
+    "gulp-changed-in-place": "^2.3.0",
+    "gulp-htmlmin": "^4.0.0",
+    "gulp-notify": "^3.1.0",
+    "gulp-plumber": "^1.1.0",
+    "gulp-rename": "^1.2.2",
+    "gulp-sourcemaps": "^2.6.3",
+    "gulp-tslint": "^5.0.0",
+    "gulp-typescript": "^3.2.3",
+    "gulp-watch": "^4.3.11",
+    "html-minifier": "^3.5.8",
+    "minimatch": "^3.0.4",
+    "through2": "^2.0.3",
+    "tslint": "^3.11.0",
+    "typescript": "^2.6",
+    "uglify-js": "^3.3.4",
+    "vinyl-fs": "^2.4.3"
+  },
+  "scripts": {
+    "build": "./node_modules/.bin/aurelia build --env prod",
+    "watch": "./node_modules/.bin/aurelia run --watch"
+  }
+}

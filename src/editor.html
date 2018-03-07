@@ -1,0 +1,65 @@
+<template>
+	<require from="libvantage/vantage.css"></require>
+	<header>Player</header>
+	<card label="Wallet:"><v-number value.bind="Wallet" min="0" max="2147000000"></v-number></card>
+	<card label="Stash:"><v-number value.bind="Stash" min="0" max="2147000000"></v-number></card>
+	<card label="Medkits:"><v-number value.bind="Medkits" min="0" max="6"></v-number></card>
+	<card label="Weapon 1 Ammo:"><v-number value.bind="Weapon_1_Bullets" min="0" max="2147000000"></v-number>&nbsp;&nbsp;/<v-number value.bind="Weapon_1_Clips" min="0" max="2147000000"></v-number></card>
+	<card label="Weapon 2 Ammo:"><v-number value.bind="Weapon_2_Bullets" min="0" max="2147000000"></v-number>&nbsp;&nbsp;/<v-number value.bind="Weapon_2_Clips" min="0" max="2147000000"></v-number></card>
+	<card label="Frag Grenades:"><v-number value.bind="Frag_Grenade" min="0" max="7"></card>
+	<card label="Molotov Cocktails:"><v-number value.bind="Molotov_Cocktails" min="0" max="5"></card>
+	<card label="Screaming Zemis:"><v-number value.bind="Screaming_Zemi" min="0" max="7"></card>
+	<card label="Proximity Mines:"><v-number value.bind="Proximity_Mine" min="0" max="7"></card>
+	<header style="display:none;">Favors</header>
+	<card style="display:none;">
+		<div>
+			<label style="color:#000000;float:left;padding-top:4px">Character:</label>
+			<v-selection id="slected_character" value.bind="favors_selected_character" style="float:left;min-width:20%; padding-left:2%;" options.bind="[{value: '0', label: 'Cassandra'}, {value: '1', label: 'Vito Scaletta'}, {value: '2', label: 'Thomas Burke'}]"></v-selection>
+		</div>
+		<table>
+			<thead>
+				<th>Favor</th>
+				<th>Available</th>
+			</thead>
+			<tbody id="favors_cassandra_table" style="display:blank;" style.bind="c_table">
+					<tr><td>Basic Arms Dealer: Buy Weapons On The Go</td><td><v-switch value.bind="favors_0_z"></v-switch></td>
+					</tr><tr><td>Screaming Zemi: A Throwable Distraction Device</td><td><v-switch value.bind="favors_0_1"></v-switch></td>
+					</tr><tr><td>Gunsmith: Improved Accuracy</td><td><v-switch value.bind="favors_0_2"></v-switch></td>
+					</tr><tr><td>Operator: Shut Down Phones For 2 Mins</td><td><v-switch value.bind="favors_0_3"></v-switch></td>
+					</tr><tr><td>Gunsmith: Increased Ammo Capacity</td><td><v-switch value.bind="favors_0_4"></v-switch></td>
+					</tr><tr><td>Screaming Zemi (Smoke)</td><td><v-switch value.bind="favors_0_5"></v-switch></td>
+					</tr><tr><td>Gunsmith: Improved Stability</td><td><v-switch value.bind="favors_0_6"></v-switch></td>
+					</tr><tr><td>Operator: Shut Down Phones For 5 Mins</td><td><v-switch value.bind="favors_0_7"></v-switch></td>
+					</tr><tr><td>Screaming Zemi (Exploding)</td><td><v-switch value.bind="favors_0_8"></v-switch></td>
+					</tr><tr><td>Gunsmith: Faster Reload</td><td><v-switch value.bind="favors_0_9"></v-switch></td>
+					</tr><tr><td>Operator: Kill Phones &amp; Call Your Backup</td><td><v-switch value.bind="favors_0_a"></v-switch></td></tr>
+			</tbody>
+			<tbody id="favors_vito_table" style="display:none;" style.bind="v_table">
+					<tr><td>Consigliere: Stash Your Cash On The Go</td><td><v-switch value.bind="favors_1_z"></v-switch></td>
+					</tr><tr><td>Hit Squad: Call In Armed Backup</td><td><v-switch value.bind="favors_1_1"></v-switch></td>
+					</tr><tr><td>Mob Doc: Add A Health Bar</td><td><v-switch value.bind="favors_1_2"></v-switch></td>
+					</tr><tr><td>Mob Doc: Add Another Adrenaline Shot</td><td><v-switch value.bind="favors_1_3"></v-switch></td>
+					</tr><tr><td>Consigliere (Inside Man): Locate Enemies, Collect Kickback</td><td><v-switch value.bind="favors_1_4"></v-switch></td>
+					</tr><tr><td>Mob Doc: Improved Stamina And Health Recovery</td><td><v-switch value.bind="favors_1_5"></v-switch></td>
+					</tr><tr><td>Enforcer Hit Squad: Call In Heavier Backup</td><td><v-switch value.bind="favors_1_6"></v-switch></td>
+					</tr><tr><td>Mob Doc: Add Another Health Bar</td><td><v-switch value.bind="favors_1_7"></v-switch></td>
+					</tr><tr><td>Mob Doc: Improved Stamina And Health Recovery</td><td><v-switch value.bind="favors_1_8"></v-switch></td>
+					</tr><tr><td>High-Impact Hit Squad: Call Four-Man Kill Crew</td><td><v-switch value.bind="favors_1_9"></v-switch></td>
+					</tr><tr><td>Mob Doc: Max Health Bars</td><td><v-switch value.bind="favors_1_a"></v-switch></td></tr>
+			</tbody>
+			<tbody id="favors_thomas_table" style="display:none;" style.bind="t_table">
+				</tr><tr><td>Vehicle Delivery: Have Fresh Rides Brought To You</td><td><v-switch value.bind="favors_2_z"></v-switch></td>
+				</tr><tr><td>Clear Blue Police Zones, Cops Ignore Crimes For 30 Sec.</td><td><v-switch value.bind="favors_2_1"></v-switch></td>
+				</tr><tr><td>Cops Nearby: Mark Nearby Cops On Your Map</td><td><v-switch value.bind="favors_2_2"></v-switch></td>
+				</tr><tr><td>Explosives Supply: Arms Dealer Sells Explosives</td><td><v-switch value.bind="favors_2_3"></v-switch></td>
+				</tr><tr><td>Clear Blue Police Zones, Cops Ignore Crimes For 2 Mins.</td><td><v-switch value.bind="favors_2_4"></v-switch></td>
+				</tr><tr><td>Covert Car Theft: Steal Cars Undetected</td><td><v-switch value.bind="favors_2_5"></v-switch></td>
+				</tr><tr><td>Clears All Police Zones, Cops Ignore Crimes for 2 Mins.</td><td><v-switch value.bind="favors_2_6"></v-switch></td>
+				</tr><tr><td>Additional Explosives: Increased Carrying Capacity</td><td><v-switch value.bind="favors_2_7"></v-switch></td>
+				</tr><tr><td>Clears All Police Zones, Cops Ignore Crimes For 5 Mins.</td><td><v-switch value.bind="favors_2_8"></v-switch></td>
+				</tr><tr><td>Occupied Car Theft: Quietly Steal Occupied Cars</td><td><v-switch value.bind="favors_2_9"></v-switch></td>
+				</tr><tr><td>Clears All Police Zones, Cops Ignore Crimes For 10 Mins.</td><td><v-switch value.bind="favors_2_a"></v-switch></td></tr>
+			</tbody>
+		</table>
+	</card>	
+</template>
